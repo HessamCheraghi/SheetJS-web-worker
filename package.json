@@ -1,0 +1,32 @@
+{
+  "name": "sheetjs-web-worker",
+  "version": "1.0.0",
+  "description": "",
+  "source": "./index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "start": "parcel",
+    "build": "parcel build --public-url ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HessamCheraghi/SheetJS-web-worker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HessamCheraghi/SheetJS-web-worker/issues"
+  },
+  "homepage": "https://github.com/HessamCheraghi/SheetJS-web-worker#readme",
+  "devDependencies": {
+    "parcel": "^2.6.2"
+  },
+  "dependencies": {
+    "gh-pages": "^4.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.9/xlsx-0.18.9.tgz"
+  }
+}
