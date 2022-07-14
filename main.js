@@ -1,6 +1,7 @@
-import { generator, counter } from "./utils";
+import { generator, counter, allInOne } from "./utils";
 
 const form = document.querySelector("#test");
+const radio = document.querySelector("#main");
 
 if (window.Worker) {
   console.log("%cYour Browser Supports Web Workers!", "color: lightblue;");
@@ -13,10 +14,16 @@ if (window.Worker) {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    const rawData = generator();
-    myWorker.postMessage(rawData);
-
-    console.log("%cMessage posted to worker", "color: darkgrey;");
+    if (radio.checked) {
+      allInOne();
+    } else {
+      console.log("\n");
+      console.log("%c-- Using web worker --", "color: crimson;");
+      console.time("total time");
+      const rawData = generator();
+      myWorker.postMessage(rawData);
+      console.log("%cMessage posted to worker", "color: darkgrey;");
+    }
   });
 
   myWorker.addEventListener("message", function (e) {
@@ -37,6 +44,7 @@ if (window.Worker) {
       a.click();
 
       console.timeEnd("exporting to file");
+      console.timeEnd("total time");
     }
   });
 } else {

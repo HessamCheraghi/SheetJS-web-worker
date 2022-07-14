@@ -1,6 +1,8 @@
+import * as XLSX from "xlsx";
+
 export function reshaper(rawData) {
   console.log(
-    "%cstart doing heavy conversion and internationalization",
+    "%cstart doing conversion and other heavy tasks...",
     "color: khaki;"
   );
   console.time("conversion");
@@ -53,4 +55,24 @@ export function counter() {
   btnSub.addEventListener("click", () => {
     counter.textContent = Number(counter.textContent) - 1;
   });
+}
+export function allInOne() {
+  console.log("\n");
+  console.log("%c-- Using main thread --", "color: crimson;");
+  console.time("total time");
+
+  const rawData = generator();
+  const rows = reshaper(rawData);
+
+  console.log("%cstart converting to excel", "color: khaki;");
+  console.time("converting to excel");
+
+  const worksheet = XLSX.utils.json_to_sheet(rows);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "sheet");
+  worksheet["!cols"] = [{ wch: 18 }];
+  XLSX.writeFile(workbook, "sheet.xlsx");
+
+  console.timeEnd("converting to excel");
+  console.timeEnd("total time");
 }
