@@ -13,7 +13,8 @@ if (window.Worker) {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    myWorker.postMessage(generator());
+    const rawData = generator();
+    myWorker.postMessage(rawData);
 
     console.log("%cMessage posted to worker", "color: darkgrey;");
   });
