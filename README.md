@@ -55,7 +55,7 @@ import * as XLSX from "xlsx";
 import { reshaper } from "./utils";
 
 onmessage = function (e) {
-  // doing heavy conversion and internationalization on raw data received from main thread
+  // doing conversion and internationalization and other heavy tasks...
   const rows = reshaper(e.data);
 
   //converting to xlsx
