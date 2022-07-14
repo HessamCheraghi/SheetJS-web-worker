@@ -2,7 +2,7 @@
 
 export sheets in background using web workers
 
-you can see live example [here](https://github.com/HessamCheraghi/SheetJS-web-worker#readme).
+you can see live example [here](https://hessamcheraghi.github.io/SheetJS-web-worker/).
 
 ```javascript
 // main.js
